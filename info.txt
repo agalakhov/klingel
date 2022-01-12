@@ -1,0 +1,34 @@
+Dokument Angelegt am Dienstag dem 05.03.2019
+============================================
+
+Im Moment ist die Klingel auf drei unterschiedlichen Mikrokontrolleren verteilt:
+
+Der Wemos D1 Mini ist mit dem Arduino Nano unten verbunden.
+Die Verbindung ist RS485. Der Arduino Nano wird unten mit 12 Volt von Oben versorgt.
+
+Wenn jemand draußen auf den Schalter drückt, wird ein Signal nach Oben gesendet:
+Der Wemos D1 Mini gibt ein Signal an den Arduino Uno, der Oben eine Tonfolge abspielt.
+Anschließend gibt es ein Blink Signal(Rot, Grün) vom WS2812B draußen: Das bedeutet:
+Die Verbindung ist OK.
+
+Wenn jemand die Tür(Die schwere "Panzer" Tür) öffnet, kommt ein weiters Singal nach unten.
+Dann Blinkt es Gelb, Blau.
+
+Beide Blink Signale werden mit einem FadeOut und einem FadeIn versehen.
+
+Außedem leuchtet der Streifen Grün oder Rot, je nach dem ob der Space geöffnet ist oder geschlossen ist.
+
+- status-node(Wemos D1 mini)
+  Beinhaltet das Wemos D1 Mini Projekt. Das ist das Haupt Projekt.
+  Hier nutzten wir das, dass Space Interne MQTT.
+
+- KTT_SPACE_DOOR_BELL_04(Arduino Uno)
+  Beinhaltet eine Tonfolge, die abgespielt wird, wenn jemand die Tür Klingel gedrück hat.
+
+- KTT_Kingel_26_09_2017(Arduino Nano)
+  Ist unten(hinter der Tür drinnen) und dort ist ein WS2812B streifen angeschlossen für die Status anzeigen.
+  Sowie ein Button.
+  
+In der Zukunft würde ich gerne, die drei Kontroller durch einen ersetzten und zwar einen Wemos D1 Mini.
+Da wir da unten inzwischen W-Lan haben. Außerdem soll das Klingel Singla direkt nach Oben "geleitet" werden.
+Als Interrupt für den Raspberry PI.
